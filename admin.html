@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Demo Admin — Maison Aroma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+  <header class="site-header admin-header"><a class="wordmark" href="index.html"><span class="wordmark-mark">M.</span><span>MAISON<br><small>AROMA · DEMO ADMIN</small></span></a><a class="text-link" href="index.html">← Lihat website</a></header>
+  <main class="admin-wrap">
+    <div class="admin-heading"><div><p class="eyebrow">LOCAL DEMO CONTROL PANEL</p><h1>Product manager</h1><p>Kelola contoh katalog pada browser ini.</p></div><button id="add-product" class="button button-dark">+ Tambah produk</button></div>
+    <div class="warning"><strong>Mode demo, bukan admin aman untuk produksi.</strong> Data disimpan di localStorage browser ini, tidak tersinkron ke perangkat lain dan tidak memiliki login. Jangan masukkan data pelanggan atau rahasia bisnis. Untuk website klien, ganti dengan autentikasi dan database server yang aman.</div>
+    <section class="admin-settings"><div><label for="wa-number">Nomor WhatsApp toko (kode negara, angka saja)</label><input id="wa-number" placeholder="6281234567890" inputmode="numeric"><small>Contoh Indonesia: 62812xxxx. Tidak memakai +, spasi, atau tanda hubung.</small></div><button id="save-settings" class="button button-dark">Simpan pengaturan</button></section>
+    <section class="admin-products"><div class="admin-list-head"><h2>Produk</h2><span id="product-count"></span></div><div class="table-scroll"><table><thead><tr><th>Produk</th><th>Kategori</th><th>Harga (Rp)</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="admin-product-rows"></tbody></table></div></section>
+    <p class="admin-footnote">Gunakan data fiktif untuk presentasi. Sebelum peluncuran komersial, ganti merek, foto, harga, deskripsi, kontak, kebijakan, dan informasi lainnya dengan data yang disetujui pemilik toko.</p>
+  </main>
+  <div class="admin-modal hidden" id="edit-modal"><form id="product-form" class="admin-form"><div class="form-title"><h2 id="form-title">Tambah produk</h2><button type="button" id="cancel-form" class="close-button">×</button></div>
+    <input type="hidden" id="p-id">
+    <label>Nama produk<input id="p-name" required maxlength="80"></label>
+    <div class="form-row"><label>Kategori<select id="p-category"><option>Woody</option><option>Floral</option><option>Fresh</option><option>Oriental</option><option>Other</option></select></label><label>Ukuran<input id="p-size" placeholder="50 ml" maxlength="30"></label></div>
+    <div class="form-row"><label>Harga (Rp)<input id="p-price" type="number" min="0" step="1000" required></label><label>Warna botol demo<select id="p-tone"><option value="dark">Dark</option><option value="rose">Rose</option><option value="green">Green</option><option value="clear">Clear</option></select></label></div>
+    <label>URL gambar (opsional)<input id="p-image" type="url" placeholder="https://..."></label>
+    <label>Deskripsi<textarea id="p-description" rows="3" maxlength="600"></textarea></label>
+    <label class="check-label"><input id="p-featured" type="checkbox"> Tampilkan sebagai pilihan unggulan</label>
+    <label class="check-label"><input id="p-active" type="checkbox" checked> Tampilkan di katalog</label>
+    <div class="form-actions"><button type="button" id="cancel-form-2" class="button button-outline">Batal</button><button class="button button-dark" type="submit">Simpan produk</button></div>
+  </form></div>
+  <div class="toast" id="admin-toast"></div>
+  <script src="admin.js"></script>
+</body></html>
